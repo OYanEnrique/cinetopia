@@ -18,7 +18,7 @@ Aprender e aplicar design patterns no Flutter para:
 
 ```bash
 # Clone o repositório
-git clone <url-do-repositorio>
+git clone https://github.com/OYanEnrique/cinetopia.git
 
 # Entre no diretório
 cd cinetopia
