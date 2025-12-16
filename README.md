@@ -14,6 +14,14 @@ Aprender e aplicar design patterns no Flutter para:
 - Aplicar boas práticas de desenvolvimento
 - Utilizar padrões de projeto adequados
 
+## ✨ Funcionalidades
+
+- Tela inicial com apresentação do aplicativo
+- Navegação entre telas
+- Busca de filmes
+- Interface com gradientes e design moderno
+- Componentes reutilizáveis (PrimaryButton)
+
 ## 🚀 Como Executar
 
 ```bash
