@@ -17,10 +17,13 @@ Aprender e aplicar design patterns no Flutter para:
 ## ✨ Funcionalidades
 
 - Tela inicial com apresentação do aplicativo
-- Navegação entre telas
-- Busca de filmes
+- Dashboard com navegação por abas
+- Tela de busca de filmes com lista scrollável
+- Tela de lançamentos
+- Cards de filmes personalizados
 - Interface com gradientes e design moderno
-- Componentes reutilizáveis (PrimaryButton)
+- Componentes reutilizáveis (PrimaryButton, MovieCard)
+- Sistema de navegação com BottomNavigationBar
 
 ## 🚀 Como Executar
 
