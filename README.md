@@ -20,7 +20,7 @@ Aprender e aplicar design patterns no Flutter para:
 - Dashboard com navegação por abas
 - Tela de busca de filmes com lista scrollável
 - Tela de lançamentos
-- Cards de filmes personalizados
+- Cards de filmes personalizados com imagens da API
 - Interface com gradientes e design moderno
 - Componentes reutilizáveis (PrimaryButton, MovieCard)
 - Sistema de navegação com BottomNavigationBar
@@ -28,6 +28,8 @@ Aprender e aplicar design patterns no Flutter para:
 - **Busca de filmes populares em tempo real**
 - **Carregamento assíncrono de dados com FutureBuilder**
 - **Tratamento de erros e estados de loading**
+- **Arquitetura MVVM (Model-View-ViewModel)**
+- **Separação de responsabilidades com Services e ViewModels**
 
 ## 🚀 Como Executar
 
@@ -66,10 +68,14 @@ lib/
 ├── app/
 │   ├── api_key.dart
 │   ├── app.dart
+│   ├── helpers/
+│   │   └── consts.dart
 │   ├── models/
 │   │   └── movie.dart
-│   └── services/
-│       └── search_movies_service.dart
+│   ├── services/
+│   │   └── search_movies_service.dart
+│   └── viewmodels/
+│       └── search_movies_viewmodel.dart
 └── ui/
     ├── components/
     │   ├── movie_card.dart
@@ -89,11 +95,20 @@ lib/
 
 ## 🎨 Features Implementadas
 
+### Design Patterns e Arquitetura
+- **MVVM Pattern**: Separação clara entre Model, View e ViewModel
+- **Abstract Factory**: Interface `SearchMoviesService` com implementação concreta
+- **Dependency Injection**: Injeção de dependências no ViewModel
+
+### Componentes Técnicos
 - **Model Movie**: Classe com `fromMap` para deserialização de dados da API
-- **SearchMoviesService**: Service para buscar filmes populares
+- **SearchMoviesService**: Service abstrato para buscar filmes populares
+- **SearchMoviesViewmodel**: ViewModel para gerenciar estado e lógica de negócio
 - **FutureBuilder**: Gerenciamento de estados assíncronos
 - **CustomScrollView**: Lista scrollável com Slivers
 - **Tratamento de exceções**: Try-catch para erros de rede
+- **Helper consts**: Centralização de constantes e configurações
+- **Carregamento de imagens**: Integração com CDN do TMDB
 ## 📚 Recursos
 
 - [Documentação Flutter](https://docs.flutter.dev/)
