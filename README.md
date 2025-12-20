@@ -18,18 +18,20 @@ Aprender e aplicar design patterns no Flutter para:
 
 - Tela inicial com apresentação do aplicativo
 - Dashboard com navegação por abas
-- Tela de busca de filmes com lista scrollável
-- Tela de lançamentos
+- Tela de busca de filmes com lista scrollável e pesquisa dinâmica
+- Tela de lançamentos (filmes em pré-estreia)
+- Detalhes completos dos filmes ao clicar nos cards
 - Cards de filmes personalizados com imagens da API
 - Interface com gradientes e design moderno
 - Componentes reutilizáveis (PrimaryButton, MovieCard)
 - Sistema de navegação com BottomNavigationBar
 - **Integração com API do The Movie Database (TMDB)**
-- **Busca de filmes populares em tempo real**
+- **Busca de filmes populares e pesquisa personalizada em tempo real**
 - **Carregamento assíncrono de dados com FutureBuilder**
 - **Tratamento de erros e estados de loading**
 - **Arquitetura MVVM (Model-View-ViewModel)**
 - **Separação de responsabilidades com Services e ViewModels**
+- **Layout responsivo com tratamento de overflow**
 
 ## 🚀 Como Executar
 
@@ -73,7 +75,8 @@ lib/
 │   ├── models/
 │   │   └── movie.dart
 │   ├── services/
-│   │   └── search_movies_service.dart
+│   │   ├── search_movies_service.dart
+│   │   └── releases_viewmodel.dart
 │   └── viewmodels/
 │       └── search_movies_viewmodel.dart
 └── ui/
@@ -83,6 +86,8 @@ lib/
     └── screens/
         ├── home/
         ├── dashboard/
+        ├── movie_details.dart
+        ├── releases.dart
         └── search_movies.dart
 ```
 
@@ -97,18 +102,32 @@ lib/
 
 ### Design Patterns e Arquitetura
 - **MVVM Pattern**: Separação clara entre Model, View e ViewModel
-- **Abstract Factory**: Interface `SearchMoviesService` com implementação concreta
+- **Abstract Factory**: Interface `SearchMoviesService` com múltiplas implementações
+  - `SearchPopularMoviesService`: Busca filmes populares
+  - `SearchForMovie`: Busca filmes por query personalizada
+  - `SearchForUpcomingMovies`: Busca próximos lançamentos
 - **Dependency Injection**: Injeção de dependências no ViewModel
+- **Stateful Widgets**: Gerenciamento de estado com TextField e busca dinâmica
 
 ### Componentes Técnicos
 - **Model Movie**: Classe com `fromMap` para deserialização de dados da API
-- **SearchMoviesService**: Service abstrato para buscar filmes populares
-- **SearchMoviesViewmodel**: ViewModel para gerenciar estado e lógica de negócio
+- **SearchMoviesService**: Service abstrato com 3 implementações concretas
+- **SearchMoviesViewmodel**: ViewModel para gerenciar busca e estado dos filmes
+- **ReleasesViewmodel**: ViewModel dedicado para lançamentos
 - **FutureBuilder**: Gerenciamento de estados assíncronos
-- **CustomScrollView**: Lista scrollável com Slivers
+- **CustomScrollView**: Lista scrollável com Slivers para performance otimizada
+- **MovieCard responsivo**: Card com `Expanded` e `TextOverflow.ellipsis` para evitar overflow
+- **Navegação**: `Navigator.push` para tela de detalhes com `MaterialPageRoute`
 - **Tratamento de exceções**: Try-catch para erros de rede
-- **Helper consts**: Centralização de constantes e configurações
+- **Helper consts**: Centralização de URLs e headers da API
 - **Carregamento de imagens**: Integração com CDN do TMDB
+
+### Melhorias de UI/UX
+- **Layout responsivo**: Padding horizontal para evitar overflow de conteúdo
+- **TextField interativo**: Busca ao completar a digitação
+- **Estados de loading**: CircularProgressIndicator durante carregamento
+- **Cards clicáveis**: InkWell com navegação para detalhes
+- **Truncamento de texto**: Textos longos com reticências automáticas
 ## 📚 Recursos
 
 - [Documentação Flutter](https://docs.flutter.dev/)
